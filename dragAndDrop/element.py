@@ -21,7 +21,7 @@ class Element(QWidget):
         self.elementLayout = QVBoxLayout(self)
         for i in range(5):
             elementLabel = QLabel("element "+str(i))
-            elementLabelDraggable = DraggableLabel(elementLabel,'aquadopp.bmp')
+            elementLabelDraggable = DraggableLabel(elementLabel,'dragAndDrop\\aquadopp.bmp')
             self.elementLayout.addWidget(elementLabel)
 
         self.setLayout(self.elementLayout)

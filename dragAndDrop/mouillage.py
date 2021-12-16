@@ -14,6 +14,7 @@ from PyQt5.QtWidgets import (
 )
 
 from dragAndDrop.facadeTest import Facade
+from dragAndDrop.element import DraggableLabel
 
 class Mouillage(QWidget):
     def __init__(self):
@@ -41,7 +42,10 @@ class Mouillage(QWidget):
             event.ignore()
     def dropEvent(self,event):
         if event.mimeData().hasImage():
-            self.setPixmap(QPixmap.fromImage(QImage(event.mimeData().imageData())))
+            dropLabel = QLabel(event.mimeData().text())
+            pixmap = QPixmap.fromImage(QImage(event.mimeData().imageData()))
+            dropLabel.setPixmap(QPixmap.fromImage(QImage(event.mimeData().imageData())))
+            self.mouillageLayout.addWidget(dropLabel)
 
 
     
