@@ -1,4 +1,9 @@
+import os
 import sys
+import subprocess
+from functools import partial
+from math import floor
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QGridLayout
 from PyQt5.QtGui import QPalette, QColor
 
