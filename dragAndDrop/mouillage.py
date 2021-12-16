@@ -1,6 +1,7 @@
 import sys 
 
 from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QDrag,QPixmap,QPainter,QImage
 from PyQt5.QtWidgets import (
     QApplication,
     QHBoxLayout,
@@ -24,9 +25,23 @@ class Mouillage(QWidget):
         self.resize(400, 201)
         self.setAcceptDrops(True)
 
-    def dragEnterEvent(self,e):
+    """def dragEnterEvent(self,e):
         e.accept()
 
     def dropEvent(self,e):
         dropLabel = QLabel(e.mimeData().text())
-        self.mouillageLayout.addWidget(dropLabel)
+        self.mouillageLayout.addWidget(dropLabel)"""
+
+    def dragEnterEvent(self,event):
+        if event.mimeData().hasImage():
+            print("event accepted")
+            event.accept()
+        else:
+            print("event rejected")
+            event.ignore()
+    def dropEvent(self,event):
+        if event.mimeData().hasImage():
+            self.setPixmap(QPixmap.fromImage(QImage(event.mimeData().imageData())))
+
+
+    
